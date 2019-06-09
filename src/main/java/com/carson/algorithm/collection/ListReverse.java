@@ -18,12 +18,17 @@ public class ListReverse<E> {
         if(head==null){
             head = node;
         }else{
-            Node<E> cur = head;
+            //尾部插入
+            /*Node<E> cur = head;
             while(cur.getNext()!=null){
                 cur = cur.getNext();
             }
 
-            cur.setNext(node);
+            cur.setNext(node);*/
+
+            //头部插入
+            node.next = head;
+            head = node;
         }
     }
 
@@ -46,6 +51,7 @@ public class ListReverse<E> {
 
         Node<E> node1 = head;
         Node<E> node2 = head.getNext();
+        head.setNext(null);//一定要把原来的head的next设置为空
         Node<E> node3 = null;
         while(node2!=null){
             node3 = node2.getNext();
@@ -54,7 +60,6 @@ public class ListReverse<E> {
             node2 = node3;
         }
 
-        head.setNext(null);//一定要把原来的head的next设置为空
         head = node1;
     }
 
@@ -74,7 +79,6 @@ public class ListReverse<E> {
 
         System.out.println("翻转之后");
         tl.display();
-
     }
 
     class Node<E>{
